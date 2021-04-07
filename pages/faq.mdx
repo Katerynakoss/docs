@@ -3,23 +3,23 @@ export default Page({ title: "FAQ" });
 
 # FAQ
 
-## Testnet
+## Тестовая сеть
 
-#### Do I need any specific hardware?
+#### Необходимо ли мне специальное оборудование?
 
-Currently, a 8-core processor and 16 GB of RAM are the minimum requirements.
+В настоящее время к минимальным требованиям относится наличие 8-ядерного процессора и 16 ГБ оперативной памяти. 
 
-#### What about software?
+#### Какое программное обеспечение необходимо?
 
-You can download all the software required to run a Mina node [here](./getting-started/#installation). Right now, we have builds that work on macOS, as well as Debian 9 and Ubuntu 18.04. You can also [build from source](https://github.com/minaprotocol/mina) or run via [Docker](./getting-started/#installation) for other unsupported systems.
+Вы можете скачать необходимое ПО для запуска ноды Mina [здесь](./getting-started/#installation). В настоящий момент у нас есть сборки для работы на macOS, Debian 9 и Ubuntu 18.04. Вы также можете [собрать mina из исходника](https://github.com/minaprotocol/mina) или запустить с помощью [Docker](./getting-started/#installation), если пользуетесь другими ОС.
 
-#### What can I do on the Mina network?
+#### Что я могу выполнять в сети Mina? 
 
-Any node can send and receive transactions on the Mina network. Additionally, any node can choose to be a "Node operator". Node operators play two specific roles:
+Каждая нода может отправлять и получать транзакции в сети Mina. Более того, любая нода может быть "оператором нод". Операторы нод выполняют две определенные роли: 
 
-1. Block Producer - this is analogous to being a Bitcoin "miner" or a "validator" in other proof-of-stake networks. By staking mina, you can be selected to produce a block and win the block reward
+1. Блок-продюсер (block producer) - это аналог "майнера" в Биткоин-сети или "валидатора" в других PoS-сетях. Если вы осуществляете стейкинг в Mina, вас могут выбрать для выполнения функции по созданию блоков и получения вознаграждения за подтверждение блоков. 
 
-2. Snark Worker - this job is what helps compress data in Mina's network. The snark worker nodes generate proofs of transactions, and the block producer buys these proofs on the network (we call it a "snarketplace" :)) - thus, the snark worker gets rewarded a bit of the block reward for their efforts.
+2. Снарк-воркер (snark worker) - обязанность благодаря которой происходит сжатие данных в сети Mina. Ноды снарк-воркеров генерируют доказательства транзакций, в то время как блок-продюсер приобретает эти доказательства в сети (назовем это "снаркетплейс" :)) - при этом снарк-воркер получает часть вознаграждения за блоки в обмен на свои усилия.
 
 #### What is the point of a testnet?
 
