@@ -13,11 +13,11 @@ export default Page({ title: "FAQ" });
 
 Вы можете скачать необходимое ПО для запуска ноды Mina [здесь](./getting-started/#installation). В настоящий момент у нас есть сборки для работы на macOS, Debian 9 и Ubuntu 18.04. Вы также можете [собрать mina из исходника](https://github.com/minaprotocol/mina) или запустить с помощью [Docker](./getting-started/#installation), если пользуетесь другими ОС.
 
-#### Как я могу работать в сети Mina? 
+#### Какие функции я могу выполнять в сети Mina? 
 
 Каждая нода может отправлять и получать транзакции в сети Mina. Более того, любая нода может быть "оператором нод". Операторы нод выполняют две определенные функции: 
 
-1. Блок-продюсер (block producer) - это аналог "майнера" в Биткоин-сети или "валидатора" в других PoS-сетях. Если вы осуществляете стейкинг в Mina, вас могут выбрать для выполнения функции по созданию блоков и получения вознаграждения за подтверждение блоков. 
+1. Блок-продюсер (block producer) - это аналог "майнера" в биткоин-сети или "валидатора" в других PoS-сетях. Если вы осуществляете стейкинг в Mina, вас могут выбрать для выполнения функции создания блоков, и за подтверждение блоков вы будете получать вознаграждения. 
 
 2. Снарк-воркер (snark worker) - обязанность благодаря которой происходит сжатие данных в сети Mina. Ноды снарк-воркеров генерируют доказательства транзакций, в то время как блок-продюсер приобретает эти доказательства в сети (назовем это "снаркетплейс" :)) - при этом снарк-воркер получает часть вознаграждения за блоки в обмен за приложенные усилия.
 
@@ -25,73 +25,73 @@ export default Page({ title: "FAQ" });
 
 Цель тестовой сети Mina - повысить стабильность Mina, улучшить программное обеспечение за счет исправления ошибок и решения проблем пользователей, а также протестировать схему экономического стимулирования в Mina. Принимая участие в тестовой сети, вы становитесь первыми участниками протокола Mina и помогаете развивать его с нуля. 
 
-#### Хочу попробовать участвовать в тестовой сети. Где это сделать? 
+#### Как начать работу в девнете?
 
-Head over to the [Testworld landing page](/testworld.html) to learn more and get started.
+Перейдите на [страницу Devnet](/docs/advanced/connecting-devnet), чтобы узнать больше и начать работу.
 
-#### My daemon crashed -- where should I share the error log?
+#### Daemon выдает ошибку -- куда сообщить лог ошибки?
 
-First, check out [Github issues](https://github.com/minaprotocol/mina/issues) to see if this is a known issue. If the error you experienced is a new issue, file a Github issue with the appropriate tags (daemon, bug). Mina developers will triage the issue and fix it in a future sprint -- thanks for your help!
+Сначала зайдите в раздел [Github issues](https://github.com/minaprotocol/mina/issues), возможно, там вы найдете решение. Если ошибка – нераспространенная, сообщите о проблеме на Github и укажите соответствующие тэги (daemon, bug). Благодаря вам разработчики Mina смогут узнать о проблеме, и ошибка будет устранена в следующем спринте. 
 
-#### How can I report other issues / get in touch with the development team?
+#### Куда сообщать о других проблемах/как связаться с командой разработчиков? 
 
-- The Mina community's live discussion channel is the [Discord server](https://bit.ly/MinaDiscord)
-- You can also create Github issues: https://github.com/minaprotocol/mina/issues
-- If you need to get in touch, you can submit a ticket via the [Mina Support chat](https://support.minaprotocol.com/).
+- Вы можете задать вопрос сообществу Mina напрямую на [канале Discord](https://bit.ly/MinaDiscord)
+- Вы также можете поднять тему на Github issues: https://github.com/minaprotocol/mina/issues
+- Чтобы связаться с поддержкой, отправьте тикет в [чат поддержки Mina](https://support.minaprotocol.com/).
 
-#### Is there a block explorer?
+#### Есть ли блок-эксплорер?
 
-Yes, check out these block explorers:
+Да, наши блок-эксплореры:
 
 https://minaexplorer.com/
 
 https://mina.bitfly.at/
 
-## General Questions
+## Общие вопросы
 
-#### What consensus algorithm does Mina use?
+#### Какой алгоритм консенсуса использует Mina?
 
-Mina's consensus mechanism is an implementation of Ouroboros Proof-of-Stake. Due to Mina's unique compressed blockchain, certain aspects of the algorithm have diverged from the Ouroboros papers, and the version Mina uses is called Ouroboros Samisika. Stay tuned for more details on Ouroboros Samisika and some technical writeups on its details and implementation.
+В качестве механизма консенсуса в Mina используется реализация Ouroboros Proof-of-Stake. Так как у Mina уникальный сжатый блокчейн, некоторые аспекты алгоритма отличаются от документации Ouroboros, и версия, которую использует Mina, называется Ouroboros Samisika. Следите за обновлениями, чтобы узнать больше об Ouroboros Samisika, а также детальную техническую информацию. 
 
-#### How does Mina achieve scalability?
+#### Как масштабируется Mina?
 
-Mina achieves scalability through the use of recursive zk-SNARKs. By generating a proof that attests to the validity of historic blockchain states, Mina can keep the blockchain size fixed. This allows for increased throughput due to block size limits not being as taxing on the network, thereby increasing the scalability of the network.
+Mina масштабируется за счет использования рекурсивных zk-SNARK. При создании доказательства, подтверждающего достоверность исторических состояний блокчейна, Mina может поддерживать его фиксированный размер. Благодаря этому увеличивается пропускная способность, так как ограничения размера блока не являются существенными для сети, и таким образом увеличивается масштабируемость сети. 
 
-#### Why did you develop a new protocol, rather than augmenting existing cryptocurrencies?
+#### Почему вы не создаете решения для существующих криптовалют, а разработали новый протокол? 
 
-The reason for developing a new protocol instead of offering services to other blockchains is because adding SNARKs after the fact to a Layer 1 project is not trivial. Even basic operations need to be optimized for performance inside a SNARK, and existing implementations are not able to be retrofit as such. If we look at hashing functions for example, SHA256 (used by Bitcoin) or Keccak (used by Ethereum) are extremely expensive inside a SNARK circuit, but Poseidon (what Mina uses) is optimized for performance. This and many other technical considerations make it infeasible to easily add recursive SNARKs to existing Layer 1’s, without entirely overhauling the base protocol.
+Мы разработали новый протокол вместо предоставления сервисов для других блокчейнов из-за сложностей с добавлением SNARK в проект первого уровня. Внутри SNARK даже базовые операции должны быть оптимизированы для обеспечения производительности, а существующие реализации не могут быть модифицированы как таковые. Если учитывать функции хеширования, то, например, SHA256 (используется в Биткоине) или Keccak (в Ethereum) слишком затратны внутри SNARK-схемы, а Poseidon (который используется в Mina) оптимизирован для производительности. В связи с этими и по другим техническим соображениям невозможно добавить рекурсивные SNARK в существующие протоколы первого уровня без полной перестройки базового протокола. 
 
-#### Will you require a trusted setup?
+#### Требуются доверенные устройства? 
 
-No! Mina uses a [Pickles SNARK](https://medium.com/minaprotocol/meet-pickles-snark-enabling-smart-contract-on-coda-protocol-7ede3b54c250), which requires no trusted setup.
+Нет! Mina использует [Pickles SNARK](https://medium.com/minaprotocol/meet-pickles-snark-enabling-smart-contract-on-coda-protocol-7ede3b54c250) благодаря чему использование доверенных устройств не требуется.
 
-#### Does Mina support smart contracts? If so, what smart contracting languages does it support?
+#### Поддерживает ли Mina смарт-контракты? Если да, то какие языки смарт-контрактов? 
 
-See the [documentation for Snapps](https://minaprotocol.com/docs/architecture/snapps), Mina's Snarkified applications.
+Смотрите [документацию для Snapps](https://minaprotocol.com/docs/architecture/snapps) о снарк-приложениях Mina.
 
-#### Does Mina support shielded transactions, like in Zcash?
+#### Поддерживает ли Mina защищенные транзакции, как в Zcash? 
 
-No, Mina does not natively implement privacy features at the moment. However, privacy is a key consideration for cryptocurrencies, and is also on the development roadmap.
+Нет, на данный момент Mina не поддерживает функции, обеспечивающие конфиденциальность. Тем не менее, конфиденциальность является ключевым фактором в криптовалютах, и этот раздел есть в дорожной карте. 
 
-#### Can I run the Mina daemon as a service
+#### Могу ли я запустить daemon Mina в качестве службы? 
 
-[See here](/docs/node-operator#running-mina-as-a-service) for information about using launchd or systemd with mina.
+[Смотрите здесь](/docs/using-mina/connecting#ubuntu-1804--debian-9-1), чтобы узнать информацию об использовании launchd или systemd с mina.
 
-## Block Producers
+## Блок-продюсеры
 
-#### How can I verify that I am indeed producing blocks?
+#### Как проверить, что действительно создаю блоки? 
 
-(Via the CLI):
-Execute `mina client status`
+(С помощью CLI):
+Выполните `mina client status`
 
-As output, you should see a block of text, there will be a line similar to this if your Block Producer is running:
+Если ваш блок-продюсер запущен, вы увидите текст, в котором будет примерно такая строка: 
 `Block producers running: 1 (B62qrPN5Y5yq8kGE3FbVK...)`
 
-If your Block Producer has won a slot, you will see something like this:
+Если ваш блок-продюсер создал блок в свой слот, вы увидите примерно следующее: 
 `Next block will be produced in: in 17.52m`
 
-(Via the Logs):
-The following text appears each time the daemon produces a block:
+(С помощью Logs):
+Следующий текст будет появляться каждый раз, когда daemon создает блок: 
 
 `Producing new block with parent $breadcrumb`
 
