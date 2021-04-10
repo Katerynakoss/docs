@@ -95,41 +95,41 @@ Mina масштабируется за счет использования ре�
 
 `Producing new block with parent $breadcrumb`
 
-#### I produced a block, why wasn't it selected for the _Canonical Chain_?
+#### Я создал блок, почему он не был выбран для _канонической цепи_?
 
-Due to a property of the Ouroboros Samisika consensus protocol, it's entirely possible that more than one block is produced in a particular slot. The network resolves the short-lived forks and will consolidate onto one block per slot by random selection.
+Благодаря свойству консенсуса протокола Ouroboros Samisika во время определенного слота может создаваться больше одного блока. Сеть позволяет проведение кратковременных форков и увеличивается на один любой блок во время этого слота. 
 
-Below is a visualization of the Mina Blockchain:
-![Visualization of the Mina Blockchain and its Singleton Forks](/static/img/faq/mina-singleton-forks.png)
+Ниже представлена визуализация блокчейна Mina: 
+![Визуализация блокчейна Mina и его синглтон-форков](/static/img/faq/mina-singleton-forks.png)
 
-## SNARKs and Snark Workers
+## SNARKs и Snark-воркеры
 
-#### If I run a Snark Worker, how do I get paid for my SNARKs that I generate?
+#### Если я запускаю Snark Worker, какую плату я буду получать за созданные мною SNARKs? 
 
-Block producers (the validators who add new blocks to the blockchain) are required to buy SNARKs from the network (or from what we call the Snarketplace) and will pay out some of their block reward as fees to the snark workers who generated SNARKs. This creates a secondary incentive mechanism in the network to reward nodes that help compress transactions.
+Блок-продюсерам (валидаторы, которые добавляют новые блоки в блокчейн) необходимо покупать в сети SNARK (мы еще называем это Snarketplace) и выплачивать часть своего вознаграждения за блок в виде комиссии snark-воркерам, сгенерировавшим SNARK. Это обеспечивает создание вторичного механизма стимулирования в сети, чтобы иметь возможность вознаграждать ноды, которые помогают сжатию транзакций. 
 
-#### Is generating SNARKs similar to Proof-of-Work (PoW) mining?
+#### Является ли создание SNARK аналогом майнинга в сетях Proof-of-Work (PoW)? 
 
-No, they are different in several ways:
+Нет, различия следующие:
 
-- SNARK work is deterministic, while PoW mining requires randomly calculating hashes to try and solve a puzzle. There is no luck element in SNARK work — if a snark worker wants to generate a SNARK of a transaction, they only need to generate the proof once. This means SNARK work is much less expensive and environmentally wasteful, as the compute is all spent towards a productive goal.
-- There is no difficulty increase for SNARK work, as there is with PoW mining. In fact, as SNARK constructions, and proof generation times improve, the difficulty may actually decrease.
-- SNARK work is not directly involved in consensus. Snark workers play no role in determining the next state of the blockchain. Their role is to simply generate SNARKs of transactions observed in the network
-- As a snark worker, there is no requirement for uptime. PoW miners need to run their rigs non-stop to ensure they don't miss out on a potential block. Snark workers can come online and offline as they please — it is more like Uber, where there will always be work to be done, and nobody needs to say ahead of time when they want to work.
+- Работа SNARK детерминирована, в то время как PoW-майнингу требуется случайное вычисление хэшей для решения головоломки. В работе SNARK нет элемента удачи - если snark-воркер хочет генерировать SNARK-транзакции, ему нужно сгенерировать доказательство только один раз. Это означает, что работа со SNARK намного дешевле и более экологичная, поскольку все вычисления используются для достижения продуктивной цели. 
+- При работе со SNARK сложность не увеличивется, как при PoW-майнинге. Фактически, по мере совершенствования SNARK-конструкций и улучшения времени генерации доказательств, сложность может снижаться. 
+- SNARK-воркеры не участвуют напрямую в достижении консенсуса. Они не играют никакой роли в определении следующего состояния блокчейна. Их роль - просто генерировать SNARK-транзакции, отслеживающиеся в сети. 
+- Для snark-воркеров не существует требований по uptime. PoW-майнерам необходимо работать в режиме нон-стоп, чтобы не пропустить потенциальный блок. Snark-воркеры могут подключаться и отключаться на свое усмотрение – это больше похоже на работу Uber, где всегда можно работать, но никому не нужно заранее говорить, когда именно вы хотите работать. 
 
-#### Why have my SNARKs not been included? (A.K.A. How should I price my SNARKs?)
+#### Почему мои SNARK не были включены? (Или: Как мне установить цену на SNARK?) 
 
-Even though your SNARK Worker might be producing SNARKs at a breakneck pace, if someone else produces a cheaper proof for a particular job you have already completed, their SNARK would be preferred due to its lower fee.
+Даже ваш SNARK-воркер производит SNARK с огромной скоростью, но кто-то другой предоставит более дешевое доказательство для конкретной работы, которую вы уже выполнили, его SNARK будет предпочтительнее из-за более низкой платы. 
 
-Pricing your SNARKs is a delicate balance between the cost of compute, the market environment (demand for SNARKs), your SNARK throughput, and the speed at which each of your SNARK Worker processes can produce SNARKs. Sometimes, it might even be economically prudent to turn off your SNARK Worker altogether until the market improves.
+При ценообразовании ваших SNARK вам необходимо соблюдать тонкий баланс между стоимостью вычислений, рыночной средой (спрос на SNARK), пропускной способностью ваших SNARK и скоростью, с которой каждый из ваших SNARK-воркеров производит SNARK. Иногда экономически целесообразно полностью отключить SNARK-воркер и подождать улучшений на рынке.  
 
-#### Will Snark Workers require more storage and computing power over time? What about compared to Mina full nodes?
+#### Потребуется ли больше памяти и вычислительной мощности для Snark-воркеров через определенное время? В чем отличие от полных нод Mina? 
 
-Snark workers will not need more storage or computing power over time. Snark workers simply query the mempool for pending transactions requiring Snark proofs, and then generate said proof -- this does not require syncing historical data. In addition, the underlying proving cost of Snark work doesn’t get more expensive with time.
+Через время вам не потребуется больше места или вычислительной мощности для SNARK-воркеров. Snark-воркеры просто запрашивают у мемпула ожидающие транзакции, требующие Snark-доказательств, а затем генерируют указанное доказательство - для этого не нужна синхронизация исторических данных. В дополнение, основная доказательная стоимость работы Snark не станет выше через время. 
 
-If we are comparing Snark worker nodes with full nodes on Mina, then yes Snark workers will benefit from specialized hardware as generating SNARK proofs is currently compute intensive. Again, however, with the explosion of SNARK research, this is likely to change and become more accessible to consumer hardware.
+Если сравнивать ноды Snark-воркеров с полными нодами в Mina, то Snark-воркеры имеют преимущества за счет использования специализированного оборудования, поскольку для создания SNARK-доказательств в настоящее время требуются более сложные вычисления. Опять же, поскольку ведутся активные исследования в области SNARK, это, вероятно, изменится, они станут более доступными, и их можно будет запускать с помощью потребительского оборудования. 
 
-#### What is the difference between a SNARK, a SNARK proof, and snark work?
+#### В чем разница между SNARK, SNARK-доказательством и работой snark? 
 
 SNARKs are a very overloaded term currently — when you read **SNARK**, it could be referring to the concept of succinct non-interactive proof systems (eg. SNARKs vs Bulletproofs), the specific technical implementation of the proof system (eg. the construction, the circuit, or the prover), or the individual instance of the proof itself (eg. the blockchain SNARK).
 
