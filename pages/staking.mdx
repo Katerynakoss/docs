@@ -65,7 +65,7 @@ Libp2p PeerID:              ...
 
 </Alert>
 
-Если вы хотите отправить свои монеты на аккаунт, который отличается от аккаунта, используемого для стейкинга, вы можете использовать флаг `-coinbase-receiver` при запуске  daemon. Вы можете отправлять свои монеты даже на холодный кошелек! 
+Если вы хотите отправить свои монеты на аккаунт, который отличается от аккаунта, используемого для стейкинга, вы можете использовать флаг `-coinbase-receiver` при запуске daemon. Вы можете отправлять свои монеты даже на холодный кошелек! 
 
 ### Делегирование mina
 
@@ -108,28 +108,28 @@ Libp2p PeerID:              ...
 
 Однако это не кодирование или сжатие данных в обычном понимании – можно сказать, ноды "сжимают" данные в сети, генерируя криптографические доказательства. Операторы нод или "снарк-воркеры" играют решающую роль в этом процессе, генерируя zk-SNARK для транзакций, которые были добавлены в блоки. 
 
-You can start a snark-worker using these commands:
+Вы можете запустить snark-worker, используя следующие команды: 
 
     mina client set-snark-work-fee <FEE>
     mina client set-snark-worker -address $MINA_PUBLIC_KEY
 
-Alternatively, you can restart the daemon with these flags:
+В качестве альтернативы вы можете перезапустить daemon с помощью следующих флагов: 
 
 <DaemonCommandExample
   args={["-run-snark-worker $MINA_PUBLIC_KEY", "-snark-worker-fee <fee>"]}
 />
 
-As a snark worker, you get to share some of the block reward for each block your compressed transactions make it in to. The block producer is responsible for gathering compressed transactions before including them into a block, and will be incentivized by the protocol to reward snark-workers.
+Будучи снарк-воркером, вы можете делиться частью вознаграждения за каждый блок, в который попадают ваши сжатые транзакции. Блок-продюсер ответственен за сбор сжатых транзакций перед включением их в блок, и протокол будет мотивировать блок-продюсера вознаграждать снарк-воркеров. 
 
-Snark workers can be fairly compute intensive, so if you need to limit their CPU usage, you can specify the number of threads snark workers use with the `-snark-worker-parallelism` flag. This can be especially useful if you're trying to run a block producer and snark worker on the same machine and having issues producing blocks in time.
+Снарк-воркеры могут потреблять множество вычислительных ресурсов, поэтому, если вам необходимо ограничить использование ЦП, вы можете указать количество потоков, используемых снарк-воркерами, с помощью флага `-snark-worker-parallelism`. Это особенно необходимо, если вы пытаетесь запустить блок-продюсер и снарк-воркер на одной машине, и у вас возникают проблемы со временем производства блоков.  
 
-That about covers the roles and responsibilities as a Code node operator. Since Mina is a permissionless peer-to-peer network, everything is managed and run in a decentralized manner by nodes all over the world. Similarly, the Mina project is also distributed and permissionless to join. The code is all open source, and there is much work to be done, both technical and non-technical. To learn more about how you can get involved with Mina, please check out the [Contributing to Mina section](/docs/developers/contributing).
+Это касается ролей и обязанностей оператора ноды кода. Поскольку Mina – инклюзивная p2p-сеть, все управляется и запускается децентрализованно нодами по всему миру. Поскольку Mina распределяется инклюзивно, то и присоединиться к Mina может каждый. Код полностью открыт, и нам предстоит выполнить еще множется работы, включая техническую. Чтобы узнать больше о том, как принять участие в Mina, ознакомьтесь с [разделом о вкладе в Mina](/docs/developers/contributing). 
 
-### Using daemon.json to configure your mina daemon
+### Использование daemon.json для настройки вашего daemon mina 
 
-By creating a file at `~/.mina-config/daemon.json`, you can configure your mina daemon without needing to provide options on the commandline. This can be useful for running mina as a service as well as just for avoiding repetitive typing!
+При создании файла в `~/.mina-config/daemon.json` вы можете настроить свой daemon mina и не указывать параметры в командной строке. Это может использоваться для запуска mina в виде службы, а также просто для предотвращения повторяющегося набора текста! 
 
-Most of the options that can be passed to `mina daemon` on the commandline can also be provided as options in the config file. See `mina daemon -help` for more documentation of the options. Below is an example of usage of all the usable configuration parameters (in your file, you only need to specify the ones you want to change):
+Большинство параметров, которые могут быть переданы `mina daemon` в командной строке, также могут быть параметрами в файле конфигурации. Смотрите `mina daemon -help` для получения дополнительной документации о параметрах. Ниже приведен пример использования всех используемых параметров конфигурации (вам нужно указать в своем файле только те параметры, которые вы хотите изменить): 
 
 ```
 {
